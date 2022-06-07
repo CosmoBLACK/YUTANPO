@@ -2,15 +2,130 @@
 <html>
   <head>
     <title>Yutanpo</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+
 
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body>
-    <%= yield %>
+  <body class="d-flex flex-column vh-100">
+    <header style="background-image: linear-gradient(120deg, #f6d365 0%, #fda085 100%)">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+          <a class="navbar-brand" href="/"><%= image_tag "yutanpo_logo.png", size: "240x90" %></a>
+          <div>
+            <% if member_signed_in? %>
+              <b class="text-white">ようこそ<span class="text-dark"><%= current_member.name %></span>さん</b>
+            <% end %>
+          </div>
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                        aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav ml-auto">
+              <% if member_signed_in? %>
+                <li class="nav-item">
+                  <%= link_to my_page_members_path, class: 'nav-link' do %>
+                    <i class="fa-solid fa-user-gear"></i>
+                    マイページ
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to onsens_path, class: 'nav-link' do %>
+                    <%= image_tag "onsen_mark.png", size: "16x16" %>
+                    温泉一覧
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to destroy_member_session_path, method: :delete, class: 'nav-link' do %>
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    ログアウト
+                  <% end %>
+                </li>
+              <% elsif admin_signed_in? %>
+                <li class="nav-item">
+                  <%= link_to onsens_path, class: 'nav-link' do %>
+                    <%= image_tag "onsen_mark.png", size: "16x16" %>
+                    温泉一覧
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to admin_members_path, class: 'nav-link' do %>
+                    <i class="fa-solid fa-users"></i>
+                    会員一覧
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to admin_tags_path, class: 'nav-link' do %>
+                    <i class="fa-solid fa-tags"></i>
+                    タグ一覧
+                  <% end %>
+                </li>
+                <li>
+                  <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link' do %>
+                    <i class="fa-solid fa-right-from-bracket"></i>
+                    ログアウト
+                  <% end %>
+                </li>
+              <% else %>
+                <li class="nav-item">
+
+                  <%= link_to public_homes_about_path, class: 'nav-link' do %>
+                    <i class="fa-solid fa-book-open-reader"></i>
+                    ゆ探歩について
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to onsens_path, class: 'nav-link' do %>
+                    <%= image_tag "onsen_mark.png", size: "16x16" %>
+                    温泉一覧
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to new_member_registration_path, class: 'nav-link' do %>
+                    <i class="fa-solid fa-user-plus"></i>
+                    新規登録
+                  <% end %>
+                </li>
+                <li class="nav-item">
+                  <%= link_to new_member_session_path, class: 'nav-link' do %>
+                    <i class="fa-solid fa-right-to-bracket"></i>
+                    ログイン
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="mb-auto">
+      <div class="text-center text-white", style="background-color: #66FFCC">
+        <p id="notice"><%= notice %></p>
+      </div>
+      
+      <%= yield %>
+    </main>
+
+    <footer class="text-white", style="background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%,
+                                       rgba(0,0,0,0.15) 100%), radial-gradient(at top center, rgba(255,255,255,0.40) 0%,
+                                       rgba(0,0,0,0.40) 120%) #989898;background-blend-mode: multiply,multiply;">
+      <div class="container">
+        <div class="row no-gutters">
+          <div class="col-md-8 pt-5">
+            <p class="pl-5">©CopyRight CosmoBLACK.inc</p>
+          </div>
+          <div class="col-md-4">
+            <a class="navbar-brand" href="/"><%= image_tag "yutanpo_logo_white.png", size: "240x90" %></a>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
