@@ -1,0 +1,33 @@
+<div class="container">
+  <div class="row">
+    <h4 class="text-center mt-3">温泉情報詳細</h4>
+  </div>
+  <div class="row mt-5">
+    <div class="col-6" >
+      <%= image_tag @onsen.get_item_image(400,400) %>
+    </div>
+    <div class="col-6" >
+      <table class="table table-bordered">
+        <tbody bgcolor="#fff">
+          <tr>
+            <th style="background-color: #FFE4E1">温泉名</th>
+            <td><%= @onsen.name %></td>
+          </tr>
+          <tr>
+            <th style="background-color: #FFE4E1">温泉紹介</th>
+            <td><%= @onsen.introduction %></td>
+          </tr>
+            <th style="background-color: #FFE4E1">タグ</th>
+            <td><%= @onsen.tag.name %></td>
+          <tr>
+            <th style="background-color: #FFE4E1">住所</th>
+            <td><%= @onsen.address %></td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="form-group mt-3">
+        <%= button_to '編集する', {controller: 'items', action: 'edit'}, {method: :get, class: 'btn btn-success'} %>
+      </div>
+    </div>
+  </div>
+</div>

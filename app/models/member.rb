@@ -9,8 +9,8 @@ class Member < ApplicationRecord
 
   validates :name, presence: true
   validates :email, presence: true
-  validates :password_confirmation, presence: true
-  validates :password, presence: true
+  validates :password, presence: true, on: :create # on: :create = 新規登録時のみバリデーションがかかる。
+  validates :password_confirmation, presence: true, on: :create
 
   def get_profile_image
     (profile_image.attached?) ? profile_image : 'no_image.jpg'

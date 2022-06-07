@@ -1,6 +1,6 @@
 <div class="container">
-  <div clas="row mb-5">
-    <h4 class="text-center", style="background-color: #FFE4E1">会員一覧</h4>
+  <div clas="row">
+    <h4 class="text-center mt-3">会員一覧</h4>
       <table class="table table-bordered">
         <thead>
           <tr style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">
@@ -11,7 +11,7 @@
           </tr>
         </thead>
         <tbody style="background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%)">
-          <% @members.each do |customer| %>
+          <% @members.each do |member| %>
             <tr>
               <td><%= member.id %></td>
               <td>
