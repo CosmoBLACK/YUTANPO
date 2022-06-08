@@ -1,32 +1,37 @@
-<div class="container my-4">
-  <div class="row mt-3">
-    <h4 style="background-color: #FFE4E1">温泉新規登録</h4>
-  </div>
-  <div class="row mt-3">
-    <%= form_with model: @onsen, url: admin_onsens_path, method: :post do |f| %>
-      <div class="form-group">
-        <b><%= f.label :onsen_image, "温泉画像" %></b>
-        <%= f.file_field :onsen_image, accept: "image/*" %>
+<div class="container">
+  <div class="row no-gutters pt-5">
+    <div class="mx-auto shadow-lg",
+         style="background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%)">
+      <div class="text-center", style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">
+        <h4 class="onsen_new">温泉新規登録</h4>
       </div>
-      <div class="form-group">
-        <b><%= f.label :name, "温泉名" %></b>
-        <%= f.text_field :name, placeholder: "温泉名", class: 'form-control' %>
+      <div class="m-5">
+        <%= form_with model: @onsen, url: admin_onsens_path, method: :post do |f| %>
+          <div class="form-group">
+            <b><%= f.label :onsen_image, "温泉画像" %></b>
+            <%= f.file_field :onsen_image, accept: "image/*" %>
+          </div>
+          <div class="form-group">
+            <b><%= f.label :name, "温泉名" %></b>
+            <%= f.text_field :name, placeholder: "温泉名", class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <b><%= f.label :introduction, "温泉紹介" %></b>
+            <%= f.text_area :introduction, placeholder: "ここに説明文を記述します", class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <b><%= f.label :tag, "タグ" %></b>
+            <%= f.collection_select(:tag_id, @tags, :id, :name, {prompt: "選択してください", class: 'form-control'}) %>
+          </div>
+          <div class="form-group">
+            <b><%= f.label :address, "住所" %></b>
+            <%= f.text_field :address, placeholder: "〇〇県...", class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.submit '新規登録', class: 'btn btn-success' %>
+          </div>
+        <% end %>
       </div>
-      <div class="form-group">
-        <b><%= f.label :introduction, "温泉紹介" %></b>
-        <%= f.text_area :introduction, placeholder: "ここに説明文を記述します", class: 'form-control' %>
-      </div>
-      <div class="form-group">
-        <b><%= f.label :tag, "タグ" %></b>
-        <%= f.collection_select(:tag_id, @tags, :id, :name, {prompt: "選択してください", class: 'form-control'}) %>
-      </div>
-      <div class="form-group">
-        <b><%= f.label :address, "住所" %></b>
-        <%= f.text_field :address, placeholder: "〇〇県...", class: 'form-control' %>
-      </div>
-      <div class="form-group">
-        <%= f.submit '新規登録', class: 'btn btn-success' %>
-      </div>
-    <% end %>
+    </div>
   </div>
 </div>

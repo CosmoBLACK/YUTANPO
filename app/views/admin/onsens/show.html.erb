@@ -2,9 +2,13 @@
   <div class="row">
     <h4 class="text-center mt-3">温泉情報詳細</h4>
   </div>
+  <% @onsen_tags.each do |tag| %>
+    <%= link_to tag.name,search_tag_path(tag_id: tag.id)%>
+    <%= "(#{tag.onsens.count})" %>
+  <% end %>
   <div class="row mt-5">
     <div class="col-6" >
-      <%= image_tag @onsen.get_item_image(400,400) %>
+      <%= image_tag @onsen.get_onsen_image(400,400) %>
     </div>
     <div class="col-6" >
       <table class="table table-bordered">
@@ -18,7 +22,11 @@
             <td><%= @onsen.introduction %></td>
           </tr>
             <th style="background-color: #FFE4E1">タグ</th>
-            <td><%= @onsen.tag.name %></td>
+            <td>
+              <% @onsen_tags.each do |tag| %>
+                <%= tag.name %><%= "(#{tag.posts.count})" %>
+              <% end %>
+            </td>
           <tr>
             <th style="background-color: #FFE4E1">住所</th>
             <td><%= @onsen.address %></td>

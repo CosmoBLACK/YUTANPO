@@ -2,6 +2,9 @@
   <div class="text-center">
     <h4><%= @member.name %>さんの会員情報詳細</h4>
   </div>
+  <div class="text-center mb-5">
+    <%= image_tag @member.get_profile_image, size: '300x300' %>
+  </div>
   <div class="row mx-5">
     <table class="table mx-5">
       <tbody>
