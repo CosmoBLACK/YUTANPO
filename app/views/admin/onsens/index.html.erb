@@ -7,8 +7,9 @@
       <% end %>
     </span>
   </div>
+  <!--タグリスト-->
   <% @tag_list.each do |list| %>
-    <%=link_to list.name,search_tag_path(tag_id: list.id) %>
+    <%=link_to list.tag_name, admin_search_tag_path(tag_id: list.id) %>
     <%= "(#{list.onsens.count})" %>
   <% end %>
   <div class="row mt-3">
@@ -17,8 +18,8 @@
         <tr>
           <th>温泉ID</th>
           <th>温泉名</th>
+          <th>郵便番号</th>
           <th>住所</th>
-          <th>タグ</th>
         </tr>
       </thead>
       <tbody style="background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%)">
@@ -30,13 +31,8 @@
                 <%= onsen.name %>
               <% end %>
             </td>
+            <td><%= onsen.postal_code %></td>
             <td><%= onsen.address %></td>
-            <td>
-              <% @onsens.each do |onsen| %>
-                <%# map(&:name)により、onsenについた複数のタグの配列の要素1つ1つを:nameの型にする。join(', ')により、指定した文字で区切って連結する。%>
-                <i class="fas fa-tag"><%= onsen.tags.map(&:name).join(', ') %></i>
-              <% end %>
-            </td>
           </tr>
         <% end %>
       </tbody>

@@ -1,0 +1,45 @@
+<div class="container">
+  <div class="text-center">
+    <h4>温泉情報詳細</h4>
+  </div>
+  <div class="row mt-5">
+    <div class="col-5 pl-5">
+      <%= image_tag @onsen.get_onsen_image(300,300) %>
+    </div>
+    <div class="col-7" >
+      <table class="text-center">
+        <tbody>
+          <tr>
+            <td width="300", style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">温泉ID</td>
+            <td width="300", style="background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%)"><%= @onsen.id %></td>
+          </tr>
+          <tr>
+            <td style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">温泉名</td>
+            <td style="background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%)"><%= @onsen.name %></td>
+          </tr>
+          <tr>
+            <td style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">郵便番号</td>
+            <td style="background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%)"><%= @onsen.postal_code %></td>
+          </tr>
+          <tr>
+            <td style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">住所</td>
+            <td style="background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%)"><%= @onsen.address %></td>
+          </tr>
+          <tr>
+            <td style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">温泉紹介</td>
+            <td style="background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%)"><%= @onsen.introduction %></td>
+          </tr>
+          <tr>
+            <td style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">タグ</td>
+            <td style="background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%)">
+              <% @onsen_tags.each do |tag| %>
+                <%= link_to tag.tag_name, search_tag_path(tag_id: tag.id) %>
+                <%= "(#{tag.onsens.count})" %>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

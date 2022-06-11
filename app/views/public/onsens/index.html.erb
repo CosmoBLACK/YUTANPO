@@ -1,42 +1,27 @@
 <div class="container">
-  <div class="row">
-    <h4 class="text-center mt-3">温泉一覧</h4>
-  </div>
-  <% @tag_list.each do |list| %>
-    <%=link_to list.name,search_tag_path(tag_id: list.id) %>
+  <h4 class="text-center mt-3">温泉一覧</h4>
+  <% @tag_list.each do |list|%>
+    <%=link_to list.tag_name, search_tag_path(tag_id: list.id) %>
     <%= "(#{list.onsens.count})" %>
   <% end %>
-  <div class="row mt-3">
-    <table class="table table-bordered col-12">
-      <thead style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">
-        <tr>
-          <th>温泉ID</th>
-          <th>温泉名</th>
-          <th>住所</th>
-          <th>タグ</th>
-        </tr>
-      </thead>
-      <tbody style="background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%)">
-        <% @onsens.each do |onsen| %>
-          <tr>
-            <td><%= onsen.id %></td>
-            <td>
-              <%= link_to admin_onsen_path(onsen) do %>
-                <%= onsen.name %>
-              <% end %>
-            </td>
-            <td><%= onsen.address %></td>
-            <td>
-              <% @onsens.each do |onsen| %>
-                <%# map(&:name)により、onsenについた複数のタグの配列の要素1つ1つを:nameの型にする。join(', ')により、指定した文字で区切って連結する。%>
-                <i class="fas fa-tag"><%= onsen.tags.map(&:name).join(', ') %></i>
-              <% end %>
-            </td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
+  <% @onsens.each do |onsen| %>
+    <div class="card">
+      <%= link_to onsen_path(onsen) do %>
+        <%= image_tag onsen.get_onsen_image(200,200) %>
+      <% end %>
+      <div class="card-body">
+        <h6 class="card-title">
+          <%= link_to onsen_path(onsen) do %>
+            <%= onsen.name %>
+          <% end %>
+        </h6>
+        <%= onsen.postal_code %>
+        <%= onsen.address %>
+        <%# map(&:name)により、onsenについた複数のタグの配列の要素1つ1つを:nameの型にする。join(', ')により、指定した文字で区切って連結する。%>
+        <i class="fas fa-tag"><%= onsen.tags.map(&:tag_name).join(', ') %></i>
+      </div>
+    </div>
+  <% end %>
 </div>
 <div class="d-flex justify-content-center">
   <%= paginate @onsens %>

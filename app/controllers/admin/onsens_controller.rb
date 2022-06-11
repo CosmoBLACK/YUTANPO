@@ -16,10 +16,9 @@ class Admin::OnsensController < ApplicationController
 
   def create
     @onsen = Onsen.new(onsen_params)
-    @onsen.member_id = current_member.id
     # 受け取った値を,で区切って配列にする
-    # split = 1番目の引数に指定したパターンに従って文字列を分割し、分割された各部分文字列を要素とする配列を取得する
-    tag_list = params[:onsen][:name].split(',')
+    # split = 1番目の引数に指定したパターンに従って文字列を分割し、分割された各部分の文字列を要素とする配列を取得する
+    tag_list = params[:onsen][:tag_name].split(',')
     if @onsen.save
       @onsen.save_tag(tag_list)
       flash[:notice] = "温泉情報を登録しました！"
@@ -31,13 +30,21 @@ class Admin::OnsensController < ApplicationController
 
   def edit
     @onsen = Onsen.find(params[:id])
-    @tag_list = @post.tags.pluck(:name).join(',')
+    @tag_list = @onsen.tags.pluck(:tag_name).join(',')
   end
 
   def update
+    # onsenのid持ってくる
     @onsen = Onsen.find(params[:id])
-    tag_list = params[:onsen][:name].split(',')
+    # 入力されたタグを受け取る
+    tag_list = params[:onsen][:tag_name].split(',')
     if @onsen.update(onsen_params)
+      # このonsen_idに紐づいていたタグを@old_relationsに入れる
+      @old_relations = OnsenTag.where(onsen_id: @onsen.id)
+      # それらを取り出し、消去する
+      @old_relations.each do |relation|
+        relation.delete
+      end
       @onsen.save_tag(tag_list)
       flash[:notice] = "温泉情報を更新しました！"
       redirect_to admin_onsen_path
@@ -45,19 +52,16 @@ class Admin::OnsensController < ApplicationController
       render :edit
     end
   end
-  
+
   def search_tag
-    # 検索結果画面でもタグ一覧表示
-    @tag_list = Tag.all
-　　# 検索されたタグを受け取る
-    @tag = Tag.find(params[:tag_id])
-　　# 検索されたタグに紐づく投稿を表示
-    @onsens = @tag.onsens.page(params[:page]).per(10)
+    @tag_list = Tag.all # 検索結果画面でもタグ一覧表示
+    @tag = Tag.find(params[:tag_id]) # 検索されたタグを受け取る
+    @onsens = @tag.onsens.page(params[:page]).per(10) # 検索されたタグに紐づく投稿を表示
   end
-  
+
   private
 
   def onsen_params
-    params.require(:onsen).permit(:name, :introduction, :address, :onsen_image, :tag_id)
+    params.require(:onsen).permit(:name, :introduction, :postal_code, :address, :onsen_image, :tag_ids)
   end
 end

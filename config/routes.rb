@@ -12,6 +12,10 @@ Rails.application.routes.draw do
   root to: "public/homes#top"
   get "public/homes/about"
 
+  devise_scope :user do
+    post 'users/guest_sign_in', to: 'users/sessions#guest_sign_in'
+  end
+
   scope module: :public do
     resource :members, only: [] do
       get "my_page" => "members#show"
@@ -20,7 +24,7 @@ Rails.application.routes.draw do
       get "unsubscribe" => "members#unsubscribe"
       patch "withdraw" => "members#withdraw"
     end
-    get "search_tag"=>"onsens#search_tag" # タグの検索で使用する
+    get "search_tag" => "onsens#search_tag" # タグの検索で使用する
     resources :onsens, only: [:index, :show]
   end
 

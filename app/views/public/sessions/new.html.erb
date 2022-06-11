@@ -30,9 +30,10 @@
         <% end %>
       </div>
       <p class="pt-3"><span>--------</span> 「ゆ探歩」を初めて利用されますか？ <span>--------</span></p>
-      <div class="btn btn-info mb-3">
+      <div class="btn btn-info mb-4">
         <%= render "public/shared/links" %>
       </div>
+      <%= link_to 'ゲストログイン（閲覧用）', users_guest_sign_in_path, method: :post, class: "btn btn-secondary text-white mb-4" %>
     </div>
   </div>
 </div>

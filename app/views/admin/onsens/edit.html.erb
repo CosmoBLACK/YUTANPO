@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="row no-gutters">
+    <div class="mx-auto shadow-lg",
+         style="background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%)">
+      <div class="text-center", style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">
+        <h4 class="onsen_edit">温泉情報編集</h4>
+      </div>
+      <div class="m-5">
+        <%= form_with model: @onsen, url: admin_onsen_path(@onsen), method: :patch do |f| %>
+          <div class="form-group">
+            <b><%= f.label :onsen_image, "温泉画像" %></b>
+            <%= f.file_field :onsen_image, accept: "image/*" %>
+          </div>
+          <div class="form-group">
+            <b><%= f.label :name, "温泉名" %></b>
+            <%= f.text_field :name, placeholder: "温泉名", class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <b><%= f.label :introduction, "温泉紹介" %></b>
+            <%= f.text_area :introduction, placeholder: "ここに説明文を記述します", class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <b><%= f.label :postal_code, '郵便番号' %></b>
+            <%= f.text_field :postal_code, placeholder: "〒〇〇〇-〇〇〇〇", class: "form-control" %>
+          </div>
+          <div class="form-group">
+            <b><%= f.label :address, "住所" %></b>
+            <%= f.text_field :address, placeholder: "〇〇県...", class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <b><%= f.label :tag_name, "タグ" %></b>
+            <%= f.text_field :tag_name, value: @tag_list, placeholder: "タグを複数つけるには' , 'で区切ってください", class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.submit '変更を保存', class: 'btn btn-success' %>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

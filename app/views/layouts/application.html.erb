@@ -49,7 +49,7 @@
                 </li>
               <% elsif admin_signed_in? %>
                 <li class="nav-item">
-                  <%= link_to onsens_path, class: 'nav-link' do %>
+                  <%= link_to admin_onsens_path, class: 'nav-link' do %>
                     <%= image_tag "onsen_mark.png", size: "16x16" %>
                     温泉一覧
                   <% end %>
@@ -109,7 +109,7 @@
       <div class="text-center text-white", style="background-color: #66FFCC">
         <p id="notice"><%= notice %></p>
       </div>
-      
+
       <%= yield %>
     </main>
 

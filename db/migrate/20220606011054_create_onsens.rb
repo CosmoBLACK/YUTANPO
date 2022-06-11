@@ -3,6 +3,7 @@ class CreateOnsens < ActiveRecord::Migration[6.1]
     create_table :onsens do |t|
       t.string :name
       t.text :introduction
+      t.string :postal_code
       t.string :address
 
       t.timestamps

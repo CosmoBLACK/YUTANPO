@@ -1,40 +1,43 @@
 <div class="container">
-  <div class="row">
-    <h4 class="text-center mt-3">温泉情報詳細</h4>
+  <div class="text-center">
+    <h4>温泉情報詳細</h4>
   </div>
-  <% @onsen_tags.each do |tag| %>
-    <%= link_to tag.name,search_tag_path(tag_id: tag.id)%>
-    <%= "(#{tag.onsens.count})" %>
-  <% end %>
   <div class="row mt-5">
-    <div class="col-6" >
-      <%= image_tag @onsen.get_onsen_image(400,400) %>
+    <div class="col-5 pl-5" >
+      <%= image_tag @onsen.get_onsen_image(300,300) %>
     </div>
-    <div class="col-6" >
-      <table class="table table-bordered">
-        <tbody bgcolor="#fff">
+    <div class="col-7" >
+      <table class="text-center">
+        <tbody style="background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%)">
           <tr>
-            <th style="background-color: #FFE4E1">温泉名</th>
-            <td><%= @onsen.name %></td>
+            <th width="300", style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">温泉名</th>
+            <td width="300"><%= @onsen.name %></td>
           </tr>
           <tr>
-            <th style="background-color: #FFE4E1">温泉紹介</th>
+            <th style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">郵便番号</th>
+            <td><%= @onsen.postal_code %></td>
+          </tr>
+          <tr>
+            <th style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">住所</th>
+            <td><%= @onsen.address %></td>
+          </tr>
+          <tr>
+            <th style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">温泉紹介</th>
             <td><%= @onsen.introduction %></td>
           </tr>
-            <th style="background-color: #FFE4E1">タグ</th>
+          <tr>
+            <th style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">タグ</th>
             <td>
               <% @onsen_tags.each do |tag| %>
-                <%= tag.name %><%= "(#{tag.posts.count})" %>
+                <%= link_to tag.tag_name, admin_search_tag_path(tag_id: tag.id) %>
+                <%= "(#{tag.onsens.count})" %>
               <% end %>
             </td>
-          <tr>
-            <th style="background-color: #FFE4E1">住所</th>
-            <td><%= @onsen.address %></td>
           </tr>
         </tbody>
       </table>
       <div class="form-group mt-3">
-        <%= button_to '編集する', {controller: 'items', action: 'edit'}, {method: :get, class: 'btn btn-success'} %>
+        <%= button_to '編集する', {controller: 'onsens', action: 'edit'}, {method: :get, class: 'btn btn-success'} %>
       </div>
     </div>
   </div>

@@ -1,6 +1,6 @@
 <% tags.each do |tag| %>
   <tr>
-    <td><%= tag.name %></td>
+    <td><%= tag.tag_name %></td>
     <td><%= link_to "編集する" , edit_admin_tag_path(tag), class: "btn btn-success" %></td>
   </tr>
 <% end %>

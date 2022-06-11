@@ -1,0 +1,29 @@
+<div class="container">
+  <div class="row">
+    <h4 class="text-center mt-3">タグが<%=@tag.tag_name%>の投稿一覧</h4>
+    <span class="pt-3">
+      <%= link_to new_admin_onsen_path, class: "text-secondary ml-2" do %>
+        <i class="fa-solid fa-circle-plus fa-2x heart_green"></i>
+      <% end %>
+    </span>
+  </div>
+  <!--タグリスト-->
+  <% @tag_list.each do |list|%>
+    <%=link_to list.tag_name, admin_search_tag_path(tag_id: list.id) %>
+    <%="(#{list.onsens.count})" %>
+  <% end %>
+  <% @onsens.each do |onsen| %>
+    <div class="card">
+      <div class="card-body">
+        <h6 class="card-title">
+          <%=link_to onsen_path(onsen.id) do %>
+            <%= onsen.name %>
+          <% end %>
+        </h6>
+      </div>
+    </div>
+  <% end %>
+  <div class="d-flex justify-content-center">
+    <%= paginate @onsens %>
+  </div>
+</div>

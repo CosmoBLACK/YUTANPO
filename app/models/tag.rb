@@ -1,6 +1,6 @@
 class Tag < ApplicationRecord
-  has_many :onsen_tags, dependent: :destroy
+  has_many :onsen_tags, dependent: :destroy, foreign_key: 'tag_id'
   has_many :onsens, through: :onsen_tags
 
-  validates :name, presence:true, uniqueness:true
+  validates :tag_name, uniqueness: true, presence: true
 end

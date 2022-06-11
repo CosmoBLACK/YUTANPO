@@ -2,42 +2,40 @@
   <div class="text-center">
     <h4><%= @member.name %>さんの会員情報詳細</h4>
   </div>
-  <div class="text-center mb-5">
-    <%= image_tag @member.get_profile_image, size: '300x300' %>
-  </div>
-  <div class="row mx-5">
-    <table class="table mx-5">
-      <tbody>
-        <tr>
-          <td style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">会員ID</td>
-          <td style="background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%)"><%= @member.id %></td>
-        </tr>
-        <tr>
-          <td style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">ニックネーム</td>
-          <td style="background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%)"><%= @member.name %></td>
-        </tr>
-        <tr>
-          <td style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">メールアドレス</td>
-          <td style="background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%)"><%= @member.email %></td>
-        </tr>
-        <tr>
-          <td style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">パスワード</td>
-          <td style="background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%)"><%= @member.password %></td>
-        </tr>
-        <tr>
-          <td style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">会員ステータス</td>
-          <td style="background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%)">
-            <% if @member.deleted_flag == true %>
-              <b class="text-muted">退会</b>
-            <% else %>
-              <b class="text-success">有効</b>
-            <% end %>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-  </div>
-  <div>
-    <%= link_to "編集する", edit_admin_member_path(@member), class: "btn btn-success my-3  offset-2" %>
+  <div class="row mt-5">
+    <div class="col-5 pl-5">
+      <%= image_tag @member.get_profile_image(300,300) %>
+    </div>
+    <div class="col-7" >
+      <table class="text-center">
+        <tbody>
+          <tr>
+            <td width="300", style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">会員ID</td>
+            <td width="300", style="background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%)"><%= @member.id %></td>
+          </tr>
+          <tr>
+            <td style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">ニックネーム</td>
+            <td style="background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%)"><%= @member.name %></td>
+          </tr>
+          <tr>
+            <td style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">メールアドレス</td>
+            <td style="background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%)"><%= @member.email %></td>
+          </tr>
+          <tr>
+            <td style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">会員ステータス</td>
+            <td style="background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%)">
+              <% if @member.deleted_flag == true %>
+                <b class="text-muted">退会</b>
+              <% else %>
+                <b class="text-success">有効</b>
+              <% end %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="text-right pr-5">
+        <%= link_to "編集する", edit_admin_member_path(@member), class: "btn btn-success mt-3" %>
+      </div>
+    </div>
   </div>
 </div>

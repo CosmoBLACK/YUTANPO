@@ -1,39 +1,37 @@
 <div class="container">
-  <div class="text-center mb-5">
+  <div class="text-center">
     <h1>マイページ</h1>
   </div>
-  <div class="text-center mb-5">
-    <%= image_tag @member.get_profile_image, size: '300x300' %>
-  </div>
-  <table class="table border border-1">
-    <tbody style="background-color: white">
-      <tr>
-        <th class="col-3", style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">
-          ニックネーム
-        </th>
-        <td class="col-8", style="background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%)">
-          <%= current_member.name %>
-        </td>
-      </tr>
-      <tr>
-        <th class="col-3", style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">
-          メールアドレス
-        </th>
-        <td class="col-8", style="background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%)">
-          <%= current_member.email %>
-        </td>
-      </tr>
-      <tr>
-        <th class="col-3", style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">
-          パスワード
-        </th>
-        <td class="col-8", style="background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%)">
-          <%= current_member.password %>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-  <div class="text-right">
-    <%= link_to '編集する', my_page_edit_members_path, class: "btn btn-success ml-5" %>
+  <div class="row mt-5">
+    <div class="col-5 pl-5">
+      <%= image_tag @member.get_profile_image(300,300) %>
+    </div>
+    <div class="col-7" >
+      <table class="text-center">
+        <tbody>
+          <tr>
+            <th width="300", style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">
+              ニックネーム
+            </th>
+            <td width="300", style="background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%)">
+              <%= current_member.name %>
+            </td>
+          </tr>
+          <tr>
+            <th style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">
+              メールアドレス
+            </th>
+            <td style="background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%)">
+              <%= current_member.email %>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <% if user.name != "guestuser" %>
+        <div class="text-right pr-5">
+          <%= link_to '編集する', my_page_edit_members_path, class: "btn btn-success mt-3" %>
+        </div>
+      <% end %>
+    </div>
   </div>
 </div>
