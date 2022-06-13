@@ -1,5 +1,4 @@
 class Public::MembersController < ApplicationController
-  before_action :ensure_guest_user, only: [:edit]
 
   def show
     @member = current_member
@@ -33,13 +32,6 @@ class Public::MembersController < ApplicationController
   private
 
   def member_params
-    params.require(:member).permit(:name, :email, :password, :profile_image)
-  end
-
-  def ensure_guest_user
-    @user = User.find(params[:id])
-    if @user.name == "guestuser"
-      redirect_to my_page_members_path, notice: 'ゲスト会員はプロフィール編集画面へ遷移できません。'
-    end
+    params.require(:member).permit(:name, :email, :profile_image)
   end
 end

@@ -17,8 +17,7 @@
         </h6>
         <%= onsen.postal_code %>
         <%= onsen.address %>
-        <%# map(&:name)により、onsenについた複数のタグの配列の要素1つ1つを:nameの型にする。join(', ')により、指定した文字で区切って連結する。%>
-        <i class="fas fa-tag"><%= onsen.tags.map(&:tag_name).join(', ') %></i>
+        <%= link_to "#{onsen.comments.count} コメント", onsen_path(onsen.id) %>
       </div>
     </div>
   <% end %>

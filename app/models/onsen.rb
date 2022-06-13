@@ -37,6 +37,4 @@ class Onsen < ApplicationRecord
     onsen_image.variant(resize_to_limit: [width, height]).processed
   end
 
-  scope :latest, -> {order(created_at: :desc)}
-
 end

@@ -55,8 +55,8 @@ ActiveRecord::Schema.define(version: 2022_06_06_015316) do
   create_table "comments", force: :cascade do |t|
     t.integer "member_id"
     t.integer "onsen_id"
-    t.text "comment_content"
-    t.float "rate"
+    t.text "comment_content", null: false
+    t.float "rate", default: 0.0, null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
   end

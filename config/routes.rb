@@ -24,8 +24,12 @@ Rails.application.routes.draw do
       get "unsubscribe" => "members#unsubscribe"
       patch "withdraw" => "members#withdraw"
     end
+
     get "search_tag" => "onsens#search_tag" # タグの検索で使用する
-    resources :onsens, only: [:index, :show]
+
+    resources :onsens, only: [:index, :show] do
+      resources :comments, only: [:create, :destroy]
+    end
   end
 
   namespace :admin do

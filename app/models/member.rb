@@ -19,13 +19,4 @@ class Member < ApplicationRecord
     end
     profile_image.variant(resize_to_limit: [width, height]).processed
   end
-
-  def self.guest
-    # find_or_create_by = データの検索と作成を自動的に判断して処理を行うRailsメソッド
-    find_or_create_by!(name: 'guestuser' ,email: 'guest@example.com') do |user|
-      # SecureRandom.urlsafe_base64 = ランダムな文字列を生成するRubyメソッドの一種
-      user.password = SecureRandom.urlsafe_base64
-      user.name = "guestuser"
-    end
-  end
 end

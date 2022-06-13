@@ -1,0 +1,17 @@
+<%= form_with model: [onsen, comment] do |f| %>
+  <%= f.text_area :comment_content, rows: '5', placeholder: "コメントをここに", class: 'form-control' %>
+  <div id="rating-form">
+    <%= f.label :rate, '評価' %>
+    <%= f.hidden_field :rate, :value => 'score' %> <%# scoreNameの値をhidden_fieldでカラムに送っている %>
+  </div>
+  <br><%= f.submit "送信する", class: 'mb-3' %>
+<% end %>
+<script>
+  $('#rating-form').raty({
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
+    scoreName: 'comment[rate]',
+    half: true
+  });
+</script>

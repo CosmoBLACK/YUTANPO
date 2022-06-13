@@ -1,12 +1,22 @@
 class Public::OnsensController < ApplicationController
+
   def index
-    @onsens = Onsen.latest.page(params[:page]).per(10)
+    @onsens = Onsen.page(params[:page]).per(10)
     @tag_list = Tag.all
   end
 
   def show
     @onsen = Onsen.find(params[:id])
     @onsen_tags = @onsen.tags
+    @comment = Comment.new
+  end
+
+  def average_rate
+    unless self.comments.blank?
+      self.comments.average(:rate).round(1)
+    else
+      0.0
+    end
   end
 
   def search_tag
