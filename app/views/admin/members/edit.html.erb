@@ -2,17 +2,19 @@
   <div class="text-center">
     <h4><%= @member.name %>さんの会員情報編集</h4>
   </div>
-  <div>
+  <div class="text-center pt-5">
     <%= form_with model: @member, url: admin_member_path(@member), method: :patch do |f| %>
-      <div class="form-gropu row">
-        <%= f.label :deleted_flag, '会員ステータス', class: "col-3" %>
-        <div>
+      <table class="mx-auto">
+        <th width="150", class="member_flag", style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">
+          <%= f.label :deleted_flag, '会員ステータス' %>
+        </th>
+        <td width="150", class="member_deleted_flag" style="background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%)">
           <%= f.radio_button :deleted_flag, false %>有効
           <%= f.radio_button :deleted_flag, true %>退会
-        </div>
-      </div>
+        </td>
+      </table>
       <div>
-        <%= f.submit "変更を保存", class: "btn btn-success mt-3 mb-3 offset-3" %>
+        <%= f.submit "変更を保存", class: "btn btn-success my-5" %>
       </div>
     <% end %>
   </div>

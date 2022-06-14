@@ -106,10 +106,9 @@
     </header>
 
     <main class="mb-auto">
-      <div class="text-center text-white", style="background-color: #66FFCC">
-        <p id="notice"><%= notice %></p>
+      <div id="flash_message">
+        <%= render 'layouts/flash' %>
       </div>
-
       <%= yield %>
     </main>
 

@@ -1,26 +1,29 @@
 <div class="container">
   <h4 class="text-center mt-3">温泉一覧</h4>
+  <!--タグリスト-->
   <% @tag_list.each do |list|%>
     <%=link_to list.tag_name, search_tag_path(tag_id: list.id) %>
     <%= "(#{list.onsens.count})" %>
   <% end %>
-  <% @onsens.each do |onsen| %>
-    <div class="card">
-      <%= link_to onsen_path(onsen) do %>
-        <%= image_tag onsen.get_onsen_image(200,200) %>
-      <% end %>
-      <div class="card-body">
-        <h6 class="card-title">
+  <div class="row">
+    <% @onsens.each do |onsen| %>
+      <div class="card", style="background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%)">
+        <%= link_to onsen_path(onsen) do %>
+          <%= image_tag onsen.get_onsen_image(200,200) %>
+        <% end %>
+        <div class="badge pt-3">
           <%= link_to onsen_path(onsen) do %>
             <%= onsen.name %>
           <% end %>
-        </h6>
-        <%= onsen.postal_code %>
-        <%= onsen.address %>
-        <%= link_to "#{onsen.comments.count} コメント", onsen_path(onsen.id) %>
+        </div>
+        <div class="badge pb-3">
+          <%= onsen.postal_code %>
+          <br><%= onsen.address %>
+          <br><%= link_to "#{onsen.comments.count} コメント", onsen_path(onsen.id) %>
+        </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
 <div class="d-flex justify-content-center">
   <%= paginate @onsens %>

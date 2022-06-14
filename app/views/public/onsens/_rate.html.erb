@@ -1,0 +1,14 @@
+<%# 繰り返し処理を実行してもidを一意に保てるようにcomment.idを埋め込む %>
+<div id="star-rate-<%= comment.id %>"></div>
+
+<script>
+  $('#star-rate-<%= comment.id %>').raty({
+    size     : 36,
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
+    half: true,
+    readOnly: true, <%# 読み取り専用 %>
+    score: <%= comment.rate %> <%# 星の入力値を読み込む %>
+  })
+</script>

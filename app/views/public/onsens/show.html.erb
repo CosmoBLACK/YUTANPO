@@ -52,28 +52,14 @@
           </tr>
         </tbody>
       </table>
-      <%= render "comment_form", onsen: @onsen, comment: @comment %>
+      <% if member_signed_in? %>
+        <div class="new_comment">
+          <%= render "public/comments/comment_form", onsen: @onsen, comment: @comment %>
+        </div>
+      <% end %>
     </div>
   </div>
-  <% @onsen.comments.each do |comment| %>
-    <div class="pt-2 px-2" style="background-color: #fffffe; border: 2px solid #272343; border-radius: 2px;">
-      <div class="review-rating" data-score="<%= comment.rate %>">評価：</div>
-      <div class="text-left">
-        <%= image_tag comment.member.get_profile_image(100,100) %>
-        <p>投稿者：<%= comment.member.name %></p>
-        <p><%= comment.comment_content %></p>
-      </div>
-      <div class="text-right">
-        <p>
-          投稿日：<%= comment.created_at.strftime('%Y/%m/%d') %> |
-          <% if comment.member == current_member %>
-            <%= link_to onsen_comment_path(comment.onsen, comment), method: :delete, class: "btn btn-danger" do %>
-              コメント削除 <i class="fas fa-trash"></i>
-            <% end %>
-          <% end %>
-        </p>
-      </div>
-    </div>
-    <div class="pb-2"></div>
-  <% end %>
+  <div id="comments_area">
+    <%= render 'public/comments/comment_index', onsen: @onsen %>
+  </div>
 </div>

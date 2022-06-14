@@ -1,0 +1,27 @@
+<div id="comments_error">
+  <%= render 'layouts/error_messages', model: @comment %>
+</div>
+<%= form_with model: [onsen, comment] do |f| %>
+  <div class="form-group">
+    <%= f.label :content_content, 'コメント内容' %>
+    <%= f.text_area :comment_content, rows: '5', placeholder: "コメントをここに", class: 'form-control' %>
+  </div>
+  <!-- 評価 -->
+  <div class="form-group" id="star">
+    <%= f.label :rate, '評価：' %>
+    <%= f.hidden_field :rate, id: :review_star %>
+  </div>
+  <div class="text-right">
+    <%= f.submit "送信する", class: 'mb-3' %>
+  </div>
+<% end %>
+<!-- 評価javascript -->
+<script>
+  $('#star').raty({
+    starOn: "<%= asset_path('star-on.png') %>",
+    starOff: "<%= asset_path('star-off.png') %>",
+    starHalf: "<%= asset_path('star-half.png') %>",
+    scoreName: 'comment[rate]', <%# Onsenモデルのrateカラムに値を保存する %>
+    half: true
+  })
+</script>

@@ -11,14 +11,6 @@ class Public::OnsensController < ApplicationController
     @comment = Comment.new
   end
 
-  def average_rate
-    unless self.comments.blank?
-      self.comments.average(:rate).round(1)
-    else
-      0.0
-    end
-  end
-
   def search_tag
     @tag_list = Tag.all # 検索結果画面でもタグ一覧表示
     @tag = Tag.find(params[:tag_id]) # 検索されたタグを受け取る
