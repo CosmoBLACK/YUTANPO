@@ -1,0 +1,24 @@
+<h2>検索結果</h2>
+
+<table class="table table-hover table-inverse">
+  <!--検索対象モデルがMemberの時 -->
+  <% if @range == "Member" %>
+    <tbody>
+      <% @members.each do |member| %>
+        <tr>
+          <td><%= member.name %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  <% else %>
+    <!--検索対象モデルがMemberではない時(= 検索対象モデルがOnsenの時) -->
+    <tbody>
+      <% @onsens.each do |onsen| %>
+        <tr>
+          <td><%= onsen.name %></td>
+          <td><%= onsen.address %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  <% end %>
+</table>

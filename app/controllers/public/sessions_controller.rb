@@ -28,7 +28,7 @@ class Public::SessionsController < Devise::SessionsController
   def guest_sign_in
     member = Member.guest
     sign_in member
-    redirect_to public_homes_about_path, notice: 'ゲストメンバーでログインしました。'
+    redirect_to my_page_members_path, notice: 'ゲストメンバーでログインしました。'
   end
 
   protected

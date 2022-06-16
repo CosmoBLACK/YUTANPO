@@ -1,19 +1,17 @@
 <div class="container">
-  <div class="text-center">
-    <h4>温泉情報詳細</h4>
-  </div>
+  <h2 class="text-center">温泉情報詳細</h2>
   <div class="row mt-5">
     <div class="col-5 pl-5">
       <div class="row">
         <%= image_tag @onsen.get_onsen_image(300,300) %>
       </div>
       <div class="row pt-5">
-        <table>
-          <thead class="text-center", style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">
-            <th width="300">タグ</th>
+        <table class="text-center shadow-sm">
+          <thead style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">
+            <th width="300", class="p-2">タグ</th>
           </thead>
           <tbody style="background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%)">
-            <td>
+            <td class="p-3">
               <% @onsen_tags.each do |tag| %>
                 <%= link_to tag.tag_name, search_tag_path(tag_id: tag.id) %>
                 <%= "(#{tag.onsens.count})" %>
@@ -24,7 +22,7 @@
       </div>
     </div>
     <div class="col-7" >
-      <table class="table table-bordered text-center">
+      <table class="table table-bordered text-center shadow-sm">
         <tbody style="background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%)">
           <tr>
             <td width="300", style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">温泉名</td>
@@ -60,6 +58,9 @@
     </div>
   </div>
   <div id="comments_area">
-    <%= render 'public/comments/comment_index', onsen: @onsen %>
+    <%= render 'public/comments/comment_index', comments: @comments %>
   </div>
+</div>
+<div class="d-flex justify-content-center">
+  <%= paginate @comments %>
 </div>

@@ -1,3 +1,4 @@
-$("#comments_area").html("<%= j(render 'public/comments/comment_index', onsen: @onsen, comment: @comment) %>");
+$("#comments_area").html("<%= j(render 'public/comments/comment_index', onsen: @onsen, comment: @comment, comments: @comments) %>");
+$(".new_comment").html("<%= j(render "public/comments/comment_form", onsen: @onsen, comment: @comment) %>");
 $("textarea").val('');
 $('#flash_message').html("<%= j(render 'layouts/flash') %>");

@@ -37,4 +37,18 @@ class Onsen < ApplicationRecord
     onsen_image.variant(resize_to_limit: [width, height]).processed
   end
 
+  def self.looks(search, word)
+    if search == "perfect_match"
+      @onsen = Onsen.where("name LIKE? or address LIKE?","#{word}","#{word}")
+    elsif search == "forward_match"
+      @onsen = Onsen.where("name LIKE? or address LIKE?","#{word}%","#{word}%")
+    elsif search == "backward_match"
+      @onsen = Onsen.where("name LIKE? or address LIKE?","%#{word}","%#{word}")
+    elsif search == "partial_match"
+      @onsen = Onsen.where("name LIKE? or address LIKE?","%#{word}%","%#{word}%")
+    else
+      @onsen = Onsen.all
+    end
+  end
+
 end

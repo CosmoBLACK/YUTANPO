@@ -9,6 +9,7 @@ class Public::OnsensController < ApplicationController
     @onsen = Onsen.find(params[:id])
     @onsen_tags = @onsen.tags
     @comment = Comment.new
+    @comments = @onsen.comments.order(created_at: :desc).page(params[:page]).per(3)
   end
 
   def search_tag

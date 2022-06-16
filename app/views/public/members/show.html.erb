@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container vh-100">
   <div class="text-center">
     <h1>マイページ</h1>
   </div>
@@ -7,7 +7,7 @@
       <%= image_tag @member.get_profile_image(300,300) %>
     </div>
     <div class="col-7" >
-      <table class="text-center">
+      <table class="table table-bordered text-center shadow-sm">
         <tbody>
           <tr>
             <th width="300", style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">
@@ -27,7 +27,7 @@
           </tr>
         </tbody>
       </table>
-      <div class="text-right pr-5">
+      <div class="text-right">
         <%= link_to '編集する', my_page_edit_members_path, class: "btn btn-success mt-3" %>
       </div>
     </div>

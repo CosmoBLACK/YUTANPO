@@ -12,6 +12,7 @@ class Admin::OnsensController < ApplicationController
   def show
     @onsen = Onsen.find(params[:id])
     @onsen_tags = @onsen.tags
+    @comments = @onsen.comments.page(params[:page]).per(3)
   end
 
   def create

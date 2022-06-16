@@ -20,9 +20,24 @@ class Member < ApplicationRecord
     profile_image.variant(resize_to_limit: [width, height]).processed
   end
 
+  def self.looks(search, word)
+    if search == "perfect_match"
+      @member = Member.where("name LIKE?", "#{word}")
+    elsif search == "forward_match"
+      @member = Member.where("name LIKE?","#{word}%")
+    elsif search == "backward_match"
+      @member = Member.where("name LIKE?","%#{word}")
+    elsif search == "partial_match"
+      @member = Member.where("name LIKE?","%#{word}%")
+    else
+      @member = Member.all
+    end
+  end
+
   def self.guest
-    find_or_create_by!(name: 'guestmember',　email: 'guest@example.com') do |member|
+    find_or_create_by!(name: 'guestmember', email: 'guest@example.com') do |member|
       member.password = SecureRandom.urlsafe_base64
+      member.password_confirmation = member.password
       member.name = "guestmember"
     end
   end

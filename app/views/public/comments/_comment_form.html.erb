@@ -1,7 +1,9 @@
 <div id="comments_error">
-  <%= render 'layouts/error_messages', model: @comment %>
+  <%# unless @comment.nil? %>
+    <%#= render 'layouts/error_messages', model: @comment %>
+  <%# end %>
 </div>
-<%= form_with model: [onsen, comment] do |f| %>
+<%= form_with model: [onsen, comment], url: onsen_comments_path(onsen.id, page: params[:page]), method: :post, local: false do |f| %>
   <div class="form-group">
     <%= f.label :content_content, 'コメント内容' %>
     <%= f.text_area :comment_content, rows: '5', placeholder: "コメントをここに", class: 'form-control' %>
@@ -17,6 +19,7 @@
 <% end %>
 <!-- 評価javascript -->
 <script>
+  $('#star').empty();
   $('#star').raty({
     starOn: "<%= asset_path('star-on.png') %>",
     starOff: "<%= asset_path('star-off.png') %>",

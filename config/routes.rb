@@ -16,6 +16,8 @@ Rails.application.routes.draw do
     post 'members/guest_sign_in', to: 'public/sessions#guest_sign_in'
   end
 
+
+
   scope module: :public do
     resource :members, only: [] do
       get "my_page" => "members#show"
@@ -26,6 +28,7 @@ Rails.application.routes.draw do
     end
 
     get "search_tag" => "onsens#search_tag" # タグの検索で使用する
+    get "search" => "searches#search" # 範囲検索で使用する
 
     resources :onsens, only: [:index, :show] do
       resources :comments, only: [:create, :destroy]
@@ -34,8 +37,9 @@ Rails.application.routes.draw do
 
   namespace :admin do
     get "search_tag"=>"onsens#search_tag"
+    get "search" => "searches#search"
     resources :members, only: [:index, :show, :edit, :update]
     resources :onsens
-    resources :tags, only: [:index, :create, :edit, :update]
+    resources :tags, only: [:index, :destroy]
   end
 end

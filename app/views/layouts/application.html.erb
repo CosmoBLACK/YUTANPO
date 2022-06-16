@@ -20,6 +20,9 @@
           <div>
             <% if member_signed_in? %>
               <b class="text-white">ようこそ<span class="text-dark"><%= current_member.name %></span>さん</b>
+              <div class="pr-5">
+                <%= render "public/searches/search"%>
+              </div>
             <% end %>
           </div>
           <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
@@ -27,7 +30,7 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav ml-auto">
+            <ul class="navbar-nav nav justify-content-end">
               <% if member_signed_in? %>
                 <li class="nav-item">
                   <%= link_to my_page_members_path, class: 'nav-link' do %>
@@ -48,6 +51,9 @@
                   <% end %>
                 </li>
               <% elsif admin_signed_in? %>
+                <li class="nav-item pr-5">
+                  <%= render "admin/searches/search"%>
+                </li>
                 <li class="nav-item">
                   <%= link_to admin_onsens_path, class: 'nav-link' do %>
                     <%= image_tag "onsen_mark.png", size: "16x16" %>
@@ -60,12 +66,6 @@
                     会員一覧
                   <% end %>
                 </li>
-                <li class="nav-item">
-                  <%= link_to admin_tags_path, class: 'nav-link' do %>
-                    <i class="fa-solid fa-tags"></i>
-                    タグ一覧
-                  <% end %>
-                </li>
                 <li>
                   <%= link_to destroy_admin_session_path, method: :delete, class: 'nav-link' do %>
                     <i class="fa-solid fa-right-from-bracket"></i>
@@ -74,7 +74,6 @@
                 </li>
               <% else %>
                 <li class="nav-item">
-
                   <%= link_to public_homes_about_path, class: 'nav-link' do %>
                     <i class="fa-solid fa-book-open-reader"></i>
                     ゆ探歩について
