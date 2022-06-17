@@ -6,6 +6,7 @@ class Onsen < ApplicationRecord
 
   validates :name, presence: true, uniqueness: true
   validates :introduction, presence: true
+  validates :postal_code, presence: true
   validates :address, presence: true
 
   def save_tag(sent_tags)

@@ -1,4 +1,6 @@
 class Admin::OnsensController < ApplicationController
+  before_action :authenticate_admin!
+
   def new
     @onsen = Onsen.new
     @tags = Tag.all
@@ -12,7 +14,7 @@ class Admin::OnsensController < ApplicationController
   def show
     @onsen = Onsen.find(params[:id])
     @onsen_tags = @onsen.tags
-    @comments = @onsen.comments.page(params[:page]).per(3)
+    @comments = @onsen.comments.order(created_at: :desc).page(params[:page]).per(3)
   end
 
   def create
@@ -22,9 +24,9 @@ class Admin::OnsensController < ApplicationController
     tag_list = params[:onsen][:tag_name].split(',')
     if @onsen.save
       @onsen.save_tag(tag_list)
-      flash[:notice] = "温泉情報を登録しました！"
-      redirect_to admin_onsens_path
+      redirect_to admin_onsens_path, notice: "温泉情報を登録しました！"
     else
+      flash.now[:alert] = "未入力の項目があります。"
       render :new
     end
   end
@@ -47,9 +49,9 @@ class Admin::OnsensController < ApplicationController
         relation.delete
       end
       @onsen.save_tag(tag_list)
-      flash[:notice] = "温泉情報を更新しました！"
-      redirect_to admin_onsen_path
+      redirect_to admin_onsen_path, notice: "温泉情報を更新しました！"
     else
+      flash.now[:alert] = "未入力の項目があります。"
       render :edit
     end
   end

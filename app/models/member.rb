@@ -41,4 +41,9 @@ class Member < ApplicationRecord
       member.name = "guestmember"
     end
   end
+
+  # 有効メンバーのみログイン状態を許す記述
+  def active_for_authentication?
+   super && (deleted_flag == false)
+  end
 end

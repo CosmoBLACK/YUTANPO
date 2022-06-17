@@ -1,4 +1,5 @@
 class Public::OnsensController < ApplicationController
+  before_action :authenticate_member!
 
   def index
     @onsens = Onsen.page(params[:page]).per(10)

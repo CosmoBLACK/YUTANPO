@@ -27,9 +27,11 @@
           </tr>
         </tbody>
       </table>
-      <div class="text-right">
-        <%= link_to '編集する', my_page_edit_members_path, class: "btn btn-success mt-3" %>
-      </div>
+      <% if current_member.name != "guestmember" %>
+        <div class="text-right">
+          <%= link_to '編集する', my_page_edit_members_path, class: "btn btn-success mt-3" %>
+        </div>
+      <% end %>
     </div>
   </div>
 </div>

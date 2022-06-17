@@ -40,6 +40,11 @@
           コメント削除 <i class="fas fa-trash"></i>
         <% end %>
       <% end %>
+      <% if admin_signed_in? %>
+        <%= link_to onsen_comment_path(comment.onsen, comment, page: params[:page]), method: :delete, remote: true, class: "btn btn-danger" do %>
+          コメント削除 <i class="fas fa-trash"></i>
+        <% end %>
+      <% end %>
     </div>
   </div>
 

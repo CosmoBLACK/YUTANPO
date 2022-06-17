@@ -15,32 +15,31 @@
       <% end %>
     </td>
   </table>
-  <div class="row mt-4">
-    <table class="table table-bordered shadow-sm">
-      <thead style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">
+
+  <table class="table table-bordered shadow-sm mt-4">
+    <thead style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">
+      <tr>
+        <th>温泉ID</th>
+        <th>温泉名</th>
+        <th>郵便番号</th>
+        <th>住所</th>
+      </tr>
+    </thead>
+    <tbody style="background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%)">
+      <% @onsens.each do |onsen| %>
         <tr>
-          <th>温泉ID</th>
-          <th>温泉名</th>
-          <th>郵便番号</th>
-          <th>住所</th>
+          <td><%= onsen.id %></td>
+          <td>
+            <%= link_to admin_onsen_path(onsen) do %>
+              <%= onsen.name %>
+            <% end %>
+          </td>
+          <td><%= onsen.postal_code %></td>
+          <td><%= onsen.address %></td>
         </tr>
-      </thead>
-      <tbody style="background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%)">
-        <% @onsens.each do |onsen| %>
-          <tr>
-            <td><%= onsen.id %></td>
-            <td>
-              <%= link_to admin_onsen_path(onsen) do %>
-                <%= onsen.name %>
-              <% end %>
-            </td>
-            <td><%= onsen.postal_code %></td>
-            <td><%= onsen.address %></td>
-          </tr>
-        <% end %>
-      </tbody>
-    </table>
-  </div>
+      <% end %>
+    </tbody>
+  </table>
 </div>
 <div class="d-flex justify-content-center">
   <%= paginate @onsens %>

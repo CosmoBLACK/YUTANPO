@@ -16,8 +16,6 @@ Rails.application.routes.draw do
     post 'members/guest_sign_in', to: 'public/sessions#guest_sign_in'
   end
 
-
-
   scope module: :public do
     resource :members, only: [] do
       get "my_page" => "members#show"
@@ -40,6 +38,5 @@ Rails.application.routes.draw do
     get "search" => "searches#search"
     resources :members, only: [:index, :show, :edit, :update]
     resources :onsens
-    resources :tags, only: [:index, :destroy]
   end
 end

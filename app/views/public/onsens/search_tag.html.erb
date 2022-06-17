@@ -1,29 +1,34 @@
-<div class="container">
-  <div class="row">
-    <h4 class="text-center mt-3">タグが<%=@tag.tag_name%>の投稿一覧</h4>
-    <span class="pt-3">
-      <%= link_to new_admin_onsen_path, class: "text-secondary ml-2" do %>
-        <i class="fa-solid fa-circle-plus fa-2x heart_green"></i>
+<div class="container vh-100">
+  <h3 class="text-center mt-3">タグが「<%=@tag.tag_name%>」の投稿一覧</h3>
+  <table class="mt-5 shadow-sm">
+    <th width="150", style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)", class="text-center p-3">タグリスト</th>
+    <td style="background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%)", class="p-3">
+      <% @tag_list.each do |list|%>
+        <%=link_to list.tag_name, admin_search_tag_path(tag_id: list.id) %>
+        <%="(#{list.onsens.count})" %>
       <% end %>
-    </span>
-  </div>
-  <!--タグリスト-->
-  <% @tag_list.each do |list|%>
-    <%=link_to list.tag_name, admin_search_tag_path(tag_id: list.id) %>
-    <%="(#{list.onsens.count})" %>
-  <% end %>
-  <% @onsens.each do |onsen| %>
-    <div class="card">
-      <div class="card-body">
-        <h6 class="card-title">
-          <%=link_to onsen_path(onsen.id) do %>
+    </td>
+  </table>
+  <div class="row d-flex justify-content-center mt-5">
+    <% @onsens.each do |onsen| %>
+      <div class="card m-2 shadow-sm rounded", style="background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%)">
+        <%= link_to onsen_path(onsen) do %>
+          <%= image_tag onsen.get_onsen_image(200,200) %>
+        <% end %>
+        <div class="badge pt-3">
+          <%=link_to onsen_path(onsen) do %>
             <%= onsen.name %>
           <% end %>
-        </h6>
+        </div>
+        <div class="badge pb-3">
+          <%= onsen.postal_code %>
+          <br><%= onsen.address %>
+          <br><%= link_to "#{onsen.comments.count} コメント", onsen_path(onsen.id) %>
+        </div>
       </div>
-    </div>
-  <% end %>
-  <div class="d-flex justify-content-center">
-    <%= paginate @onsens %>
+    <% end %>
   </div>
+</div>
+<div class="d-flex justify-content-center">
+  <%= paginate @onsens %>
 </div>
