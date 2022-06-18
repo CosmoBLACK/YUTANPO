@@ -39,7 +39,7 @@ class Public::MembersController < ApplicationController
 
   def ensure_guest_member
     if current_member.name == "guestmember"
-      redirect_to my_page_members_path, notice: 'ゲストメンバーはプロフィール編集画面へ遷移できません。'
+      redirect_to my_page_members_path, danger: 'ゲストメンバーはプロフィール編集画面へ遷移できません。'
     end
   end
 end
