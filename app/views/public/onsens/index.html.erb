@@ -1,5 +1,5 @@
 <div class="container vh-100">
-  <h2 class="text-center mt-3">温泉一覧</h2>
+  <h2 class="text-center pt-5">温泉一覧</h2>
   <table class="mt-5 shadow-sm">
     <th width="150", style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)", class="text-center p-3">タグリスト</th>
     <td style="background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%)", class="p-3">
@@ -12,9 +12,11 @@
   <div class="row d-flex justify-content-center mt-5">
     <% @onsens.each do |onsen| %>
       <div class="card m-2 shadow-sm rounded", style="background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%)">
-        <%= link_to onsen_path(onsen) do %>
-          <%= image_tag onsen.get_onsen_image(200,200) %>
-        <% end %>
+        <div class="p-2">
+          <%= link_to onsen_path(onsen) do %>
+            <%= image_tag onsen.get_onsen_image(200,200) %>
+          <% end %>
+        </div>
         <div class="badge pt-3">
           <%= link_to onsen_path(onsen) do %>
             <%= onsen.name %>

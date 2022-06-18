@@ -1,9 +1,22 @@
-<div class="text-center mb-4">
-  <h5><b>本当に退会されますか？</b><h5>
-  <p>
-    退会すると、一部のページ以外は閲覧不可となります。<br>
-    退会する場合は、「退会する」をクリックしてください。
-  </p>
-  <%= link_to "退会しない", my_page_members_path, class: "btn btn-primary col-2" %>
-  <%= link_to "退会する", withdraw_members_path, method: :patch, data: { confilm: "本当に退会しますか？" }, class: "btn btn-danger col-2" %>
+<div class="container vh-100">
+  <div class="text-center">
+    <h2 class="my-5"><b>本当に退会されますか？</b><h5>
+    <table class="mx-auto shadow-sm">
+      <thead style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">
+        <th class="p-4">
+          退会すると、一部のページ以外は閲覧不可となります。<br>
+          退会する場合は、「退会する」をクリックしてください。
+        </th>
+      </thead>
+      <tbody style="background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%)">
+        <td class="row p-5">
+          <div class="col-2"></div>
+          <%= link_to "退会しない", my_page_members_path, class: "btn btn-primary col-3" %>
+          <div class="col-2"></div>
+          <%= link_to "退会する", withdraw_members_path, method: :patch, data: { confilm: "本当に退会しますか？" }, class: "btn btn-danger col-3" %>
+          <div class="col-2"></div>
+        </td>
+      </tbody>
+    </table>
+  </div>
 </div>

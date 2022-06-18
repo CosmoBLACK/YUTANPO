@@ -14,7 +14,7 @@ class Admin::OnsensController < ApplicationController
   def show
     @onsen = Onsen.find(params[:id])
     @onsen_tags = @onsen.tags
-    @comments = @onsen.comments.order(created_at: :desc).page(params[:page]).per(3)
+    @comments = @onsen.comments.order(created_at: :desc).page(params[:page]).per(2)
   end
 
   def create

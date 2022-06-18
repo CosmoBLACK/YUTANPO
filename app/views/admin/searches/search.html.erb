@@ -1,5 +1,5 @@
-<div class="container">
-  <h2 class="text-center mt-3">検索結果</h2>
+<div class="container vh-100">
+  <h2 class="text-center pt-5">検索結果</h2>
   <% if @range == "Member" %>
   <!--検索対象モデルがMemberの時 -->
     <table class="table table-bordered shadow-sm">
@@ -30,6 +30,9 @@
         <% end %>
       </tbody>
     </table>
+    <div class="d-flex justify-content-center">
+      <%= paginate @members %>
+    </div>
   <% else %>
     <!--検索対象モデルがMemberではない時(= 検索対象モデルがOnsenの時) -->
     <%= link_to new_admin_onsen_path, class: "text-dark ml-2" do %>
@@ -71,5 +74,8 @@
         <% end %>
       </tbody>
     </table>
+    <div class="d-flex justify-content-center">
+      <%= paginate @onsens %>
+    </div>
   <% end %>
 </div>

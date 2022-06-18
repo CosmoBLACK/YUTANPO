@@ -1,10 +1,8 @@
-<div class="container">
-  <div class="text-center">
-    <h2><%= @member.name %>さんの会員情報編集</h2>
-  </div>
+<div class="container vh-100">
+  <h2 class="text-center pt-5"><%= @member.name %>さんの会員情報編集</h2>
   <div class="text-center pt-5">
     <%= form_with model: @member, url: admin_member_path(@member), method: :patch do |f| %>
-      <table class="mx-auto shadow-sm">
+      <table class="mx-auto table table-bordered shadow-sm">
         <th width="150", class="member_flag", style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">
           <%= f.label :deleted_flag, '会員ステータス' %>
         </th>

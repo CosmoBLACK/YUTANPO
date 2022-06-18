@@ -1,36 +1,36 @@
 <div class="container vh-100">
   <div clas="row">
-    <h2 class="text-center mt-3">会員一覧</h2>
-      <table class="table table-bordered shadow-sm">
-        <thead>
-          <tr style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">
-            <th>会員ID</th>
-            <th>ニックネーム</th>
-            <th>メールアドレス</th>
-            <th>ステータス</th>
+    <h2 class="text-center pt-5">会員一覧</h2>
+    <table class="table table-bordered shadow-sm">
+      <thead>
+        <tr style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">
+          <th>会員ID</th>
+          <th>ニックネーム</th>
+          <th>メールアドレス</th>
+          <th>ステータス</th>
+        </tr>
+      </thead>
+      <tbody style="background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%)">
+        <% @members.each do |member| %>
+          <tr>
+            <td><%= member.id %></td>
+            <td>
+              <%= link_to admin_member_path(member.id), class: "text-body" do %>
+                <%= member.name %>
+              <% end %>
+            </td>
+          　<td><%= member.email %></td>
+            <% if member.deleted_flag == true %>
+              <td class="text-secondary">退会</td>
+            <% else %>
+            　<td class="text-success">有効</td>
+          　<% end %>
           </tr>
-        </thead>
-        <tbody style="background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%)">
-          <% @members.each do |member| %>
-            <tr>
-              <td><%= member.id %></td>
-              <td>
-                <%= link_to admin_member_path(member.id), class: "text-body" do %>
-                  <%= member.name %>
-                <% end %>
-              </td>
-            　<td><%= member.email %></td>
-              <% if member.deleted_flag == true %>
-                <td class="text-secondary">退会</td>
-              <% else %>
-              　<td class="text-success">有効</td>
-            　<% end %>
-            </tr>
-          <% end %>
-        </tbody>
-      </table>
-    <div class="d-flex justify-content-center">
-      <%= paginate @members %>
-    </div>
+        <% end %>
+      </tbody>
+    </table>
   </div>
+</div>
+<div class="d-flex justify-content-center">
+  <%= paginate @members %>
 </div>
