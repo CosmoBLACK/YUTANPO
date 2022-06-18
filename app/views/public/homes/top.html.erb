@@ -1,3 +1,23 @@
 <div class="container vh-100">
-  <h1>Topページ</h1>
+  <div class="my-5">
+    <%= image_tag "title_logo.png", size: "800x350"%>
+  </div>
+  <div class="row text-center">
+    <div class="col-6"></div>
+    <div class="col-2">
+      <%= link_to new_member_registration_path, class: 'btn-circle btn1' do %>
+        新規登録
+      <% end %>
+    </div>
+    <div class="col-2">
+      <%= link_to new_member_session_path, class: 'btn-circle btn2' do %>
+        ログイン
+      <% end %>
+    </div>
+    <div class="col-2">
+      <%= link_to members_guest_sign_in_path, method: :post, class: 'btn-circle btn3' do %>
+        ゲストログイン（閲覧用）
+      <% end %>
+    </div>
+  </div>
 </div>
