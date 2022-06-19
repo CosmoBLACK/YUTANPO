@@ -9,7 +9,7 @@ Rails.application.routes.draw do
     sessions: 'public/sessions'
   }
 
-  root to: "public/homes#top"
+  root "public/homes#top"
   get "public/homes/about"
 
   devise_scope :member do
