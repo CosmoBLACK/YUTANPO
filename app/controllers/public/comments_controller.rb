@@ -6,9 +6,10 @@ class Public::CommentsController < ApplicationController
     @comments = @onsen.comments.order(created_at: :desc).page(params[:page]).per(3)
     @comment.onsen_id = @onsen.id
     if @comment.save
-      flash.now[:success] = "コメントを投稿しました"
+      flash.now[:success] = "コメントを投稿しました！"
       render :comments
     else
+      flash.now[:danger] = "コメントもしくは星が入力されていません。"
       render :error
     end
   end
@@ -18,7 +19,7 @@ class Public::CommentsController < ApplicationController
     @onsen = Onsen.find(params[:onsen_id])
     @comment = Comment.new
     @comments = @onsen.comments.order(created_at: :desc).page(params[:page]).per(3)
-    flash.now[:success] = "投稿を削除しました"
+    flash.now[:success] = "投稿を削除しました。"
     render :comments
   end
 

@@ -1,4 +1,7 @@
 <%= form_with model: [onsen, comment], url: onsen_comments_path(onsen.id, page: params[:page]), method: :post, local: false do |f| %>
+  <div id="comments-error">
+    <%= render 'layouts/error_messages', model: f.object %>
+  </div>
   <div class="form-group">
     <%= f.label :content_content, 'コメント内容' %>
     <%= f.text_area :comment_content, rows: '5', placeholder: "コメントをここに", class: 'form-control' %>
