@@ -2,7 +2,24 @@
   <h2 class="text-center pt-5">温泉情報詳細</h2>
   <div class="row mt-3">
     <div class="col-5 pl-5" >
-      <%= image_tag @onsen.get_onsen_image(300,300) %>
+      <div class="row">
+        <%= image_tag @onsen.get_onsen_image(300,300) %>
+      </div>
+      <div class="row pt-4">
+        <table class="text-center shadow-sm">
+          <thead style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">
+            <th width="300", class="p-2">タグ</th>
+          </thead>
+          <tbody style="background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%)">
+            <td class="p-3">
+              <% @onsen_tags.each do |tag| %>
+                <%= link_to tag.tag_name, search_tag_path(tag_id: tag.id) %>
+                <%= "(#{tag.onsens.count})" %>
+              <% end %>
+            </td>
+          </tbody>
+        </table>
+      </div>
     </div>
     <div class="col-7" >
       <table class="table table-bordered text-center shadow-sm">
@@ -24,13 +41,12 @@
             <td><%= @onsen.introduction %></td>
           </tr>
           <tr>
-            <th style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">タグ</th>
-            <td>
-              <% @onsen_tags.each do |tag| %>
-                <%= link_to tag.tag_name, admin_search_tag_path(tag_id: tag.id) %>
-                <%= "(#{tag.onsens.count})" %>
-              <% end %>
-            </td>
+            <td style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">コメント件数</td>
+            <td><%= @onsen.comments.count %></td>
+          </tr>
+          <tr>
+            <td style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">平均評価</td>
+            <td><%= render 'rate_average' %></td>
           </tr>
         </tbody>
       </table>

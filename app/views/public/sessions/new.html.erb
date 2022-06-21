@@ -7,6 +7,7 @@
       </div>
       <div class="mx-5">
         <%= form_with model: @member, url: member_session_path do |f| %>
+          <%= render "public/shared/error_messages", resource: resource %>
           <div class="field">
             <%= f.label :email, "メールアドレス" %><br />
             <%= f.email_field :email, autofocus: true, autocomplete: "email" %>

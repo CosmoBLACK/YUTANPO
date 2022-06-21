@@ -9,7 +9,6 @@ class Public::CommentsController < ApplicationController
       flash.now[:success] = "コメントを投稿しました！"
       render :comments
     else
-      flash.now[:danger] = "コメントもしくは星が入力されていません。"
       render :error
     end
   end
