@@ -9,3 +9,10 @@ Admin.create!(
     email: 'quiz@quiz',
     password: '999999',
 )
+
+Member.create!(
+    name: 'tester',
+    email: 'test@test',
+    password: 'testing',
+    password_confirmation: 'testing'
+)
