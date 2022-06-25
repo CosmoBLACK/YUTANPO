@@ -110,6 +110,10 @@
         <div id="flash_message", class="text-center">
           <%= render 'layouts/flash' %>
         </div>
+      <% else %>
+        <div id="flash_message_none", class="text-center">
+          <%= render 'layouts/flash' %>
+        </div>
       <% end %>
       <%= yield %>
     </main>

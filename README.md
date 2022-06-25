@@ -28,7 +28,11 @@
 - JSライブラリ：jQuery
 - IDE：Cloud9
 
-## 使用素材
-photoAC(https://www.photo-ac.com/)
-illustAC(https://www.ac-illust.com/)
-SILHOUETTE ILLUST(https://www.silhouette-illust.com/)
+## 使用素材(写真・イラスト)入手サイト
+・photoAC(https://www.photo-ac.com/)
+・illustAC(https://www.ac-illust.com/)
+・SILHOUETTE ILLUST(https://www.silhouette-illust.com/)
+・ニフティ温泉(https://onsen.nifty.com/)
+・ゆんフリー写真素材集(https://www.yunphoto.net/jp/)
+・フォートラベル(https://4travel.jp/)
+・ふくいドットコム(https://www.fuku-e.com/)

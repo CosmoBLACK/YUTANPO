@@ -55,3 +55,7 @@
  .btn4 {
   background: #888888;
  }
+
+ #flash_message_none {
+  display: none;
+ }
