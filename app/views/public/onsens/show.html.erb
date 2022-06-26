@@ -1,11 +1,13 @@
 <div class="container">
-  <h2 class="text-center pt-5">温泉情報詳細</h2>
+  <h2 class="text-center text-white shadow-sm mt-3">温泉情報詳細</h2>
   <div class="row mt-5">
     <div class="col-5 pl-5">
       <div class="row">
-        <%= image_tag @onsen.get_onsen_image(300,300) %>
+        <%= image_tag @onsen.get_onsen_image(300,300), style: "border-style: ridge" %>
       </div>
-      <div class="row pt-4">
+
+      <!-- タグリスト -->
+      <div class="row my-4">
         <table class="text-center shadow-sm">
           <thead style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">
             <th width="300", class="p-2">タグ</th>
@@ -20,32 +22,33 @@
           </tbody>
         </table>
       </div>
+
     </div>
     <div class="col-7" >
       <table class="table table-bordered text-center shadow-sm">
         <tbody style="background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%)">
           <tr>
-            <td width="300", style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">温泉名</td>
+            <th width="300", style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">温泉名</th>
             <td width="300"><%= @onsen.name %></td>
           </tr>
           <tr>
-            <td style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">郵便番号</td>
+            <th style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">郵便番号</th>
             <td><%= @onsen.postal_code %></td>
           </tr>
           <tr>
-            <td style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">住所</td>
+            <th style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">住所</th>
             <td><%= @onsen.address %></td>
           </tr>
           <tr>
-            <td style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">温泉紹介</td>
+            <th style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">温泉紹介</th>
             <td><%= @onsen.introduction %></td>
           </tr>
           <tr>
-            <td style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">コメント件数</td>
+            <th style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">コメント件数</th>
             <td><%= @onsen.comments.count %></td>
           </tr>
           <tr>
-            <td style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">平均評価</td>
+            <th style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">平均評価</th>
             <td><%= render 'rate_average' %></td>
           </tr>
         </tbody>

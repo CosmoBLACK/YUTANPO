@@ -1,9 +1,10 @@
 <div class="container vh-100">
   <div class="row no-gutters py-5">
     <div class="mx-auto text-center shadow-lg",
-         style="background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%)">
+         style="background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
+                border-style: inset">
       <div style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">
-        <h2 class="new-title">ログイン</h2>
+        <h3 class="new-title text-white">ログイン</h3>
       </div>
       <div class="mx-5">
         <%= form_with model: @member, url: member_session_path do |f| %>
@@ -26,7 +27,7 @@
           <% end %>
 
           <div class="actions pt-2">
-            <%= f.submit "ログイン" %>
+            <%= f.submit "ログイン", class: "btn btn-success" %>
           </div>
         <% end %>
       </div>

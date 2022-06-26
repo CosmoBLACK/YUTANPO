@@ -1,11 +1,12 @@
-<div class="container vh-100">
-  <h2 class="text-center pt-5">温泉情報詳細</h2>
+<div class="container">
+  <h2 class="text-center text-white shadow-sm mt-3">温泉情報詳細</h2>
   <div class="row mt-5">
     <div class="col-5 pl-5" >
       <div class="row">
-        <%= image_tag @onsen.get_onsen_image(300,300) %>
+        <%= image_tag @onsen.get_onsen_image(300,300), style: "border-style: ridge" %>
       </div>
-      <div class="row pt-4">
+      <!-- タグリスト -->
+      <div class="row my-4">
         <table class="text-center shadow-sm">
           <thead style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">
             <th width="300", class="p-2">タグ</th>
@@ -20,6 +21,7 @@
           </tbody>
         </table>
       </div>
+
     </div>
     <div class="col-7" >
       <table class="table table-bordered text-center shadow-sm">
@@ -41,11 +43,11 @@
             <td><%= @onsen.introduction %></td>
           </tr>
           <tr>
-            <td style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">コメント件数</td>
+            <th style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">コメント件数</th>
             <td><%= @onsen.comments.count %></td>
           </tr>
           <tr>
-            <td style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">平均評価</td>
+            <th style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">平均評価</th>
             <td><%= render 'rate_average' %></td>
           </tr>
         </tbody>

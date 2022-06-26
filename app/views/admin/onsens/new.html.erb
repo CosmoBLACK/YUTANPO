@@ -1,9 +1,10 @@
 <div class="container">
-  <div class="row no-gutters py-5">
+  <div class="row no-gutters mt-3 mb-5">
     <div class="mx-auto shadow-lg",
-         style="background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%)">
+         style="background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%);
+                border-style: inset">
       <div class="text-center", style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">
-        <h4 class="onsen_new">温泉新規登録</h4>
+        <h3 class="onsen_new text-white">温泉新規登録</h3>
       </div>
       <div class="m-5">
         <%= form_with model: @onsen, url: admin_onsens_path, method: :post do |f| %>

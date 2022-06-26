@@ -1,5 +1,5 @@
 <div class="container vh-100">
-  <h2 class="text-center pt-5"><%= @member.name %>さんの会員情報編集</h2>
+  <h2 class="text-center text-white shadow-sm mt-3"><%= @member.name %>さんの会員情報編集</h2>
   <div class="text-center pt-5">
     <%= form_with model: @member, url: admin_member_path(@member), method: :patch do |f| %>
       <table class="mx-auto table table-bordered shadow-sm">

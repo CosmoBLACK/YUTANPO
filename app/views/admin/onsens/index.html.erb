@@ -1,11 +1,13 @@
 <div class="container">
-  <h2 class="text-center pt-5">温泉一覧</h2>
+  <h2 class="text-center text-white shadow-sm mt-3">温泉一覧</h2>
   <%= link_to new_admin_onsen_path, class: "text-dark ml-2" do %>
     <h4>
       <i class="fa-solid fa-circle-plus heart_green"></i>
       温泉新規登録
     </h4>
   <% end %>
+
+  <!-- タグリスト -->
   <table class="mt-3 shadow-sm">
     <th width="150", style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)", class="text-center p-3">タグリスト</th>
     <td style="background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%)", class="p-3">

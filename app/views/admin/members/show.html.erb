@@ -1,26 +1,26 @@
 <div class="container vh-100">
-  <h2 class="text-center pt-5"><%= @member.name %>さんの会員情報詳細</h2>
+  <h2 class="text-center text-white shadow-sm mt-3"><%= @member.name %>さんの会員情報詳細</h2>
   <div class="row mt-5">
     <div class="col-5 pl-5">
-      <%= image_tag @member.get_profile_image(300,300) %>
+      <%= image_tag @member.get_profile_image(300,300), style: "border-style: ridge" %>
     </div>
     <div class="col-7" >
       <table class="table table-bordered text-center shadow-sm">
         <tbody>
           <tr>
-            <td width="300", style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">会員ID</td>
+            <th width="300", style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">会員ID</th>
             <td width="300", style="background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%)"><%= @member.id %></td>
           </tr>
           <tr>
-            <td style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">ニックネーム</td>
+            <th style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">ニックネーム</th>
             <td style="background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%)"><%= @member.name %></td>
           </tr>
           <tr>
-            <td style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">メールアドレス</td>
+            <th style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">メールアドレス</th>
             <td style="background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%)"><%= @member.email %></td>
           </tr>
           <tr>
-            <td style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">会員ステータス</td>
+            <th style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">会員ステータス</th>
             <td style="background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%)">
               <% if @member.deleted_flag == true %>
                 <b class="text-muted">退会</b>

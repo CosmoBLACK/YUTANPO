@@ -41,7 +41,7 @@
  }
 
  .btn1 {
-  background: #FF6928;
+  background: #5D99FF;
  }
 
  .btn2 {
@@ -49,13 +49,40 @@
  }
 
  .btn3 {
-  background: #5D99FF;
- }
-
- .btn4 {
   background: #888888;
  }
 
  #flash_message_none {
   display: none;
  }
+
+ h2 {
+  position: relative;
+  padding: 0.5em;
+  background: linear-gradient(-225deg, #CBBACC 0%, #2580B3 100%);
+  color: white;
+  text-shadow:2px 2px 3px #888888;
+ }
+
+ h2:after {
+  position: absolute;
+  content: '';
+  top: 100%;
+  left: 0;
+  border: none;
+  border-bottom: solid 15px transparent;
+  border-right: solid 20px rgb(58, 2, 39);
+}
+
+.about_text {
+  background: #f8e39f;
+  box-shadow: 0px 0px 0px 10px #f8e39f;
+  border: dashed 2px white;
+  padding: 0.2em 0.5em;
+}
+
+h3  {
+  border-style: inset;
+  background: linear-gradient(-225deg, #CBBACC 0%, #2580B3 100%);
+  text-shadow:2px 2px 3px #888888;
+}
