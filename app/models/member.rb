@@ -23,13 +23,13 @@ class Member < ApplicationRecord
 　# 範囲検索
   def self.looks(search, word)
     if search == "perfect_match"
-      @member = Member.where("name LIKE? or email LIKE?","#{word}","#{word}")
+      @member = Member.where("name LIKE?","#{word}")
     elsif search == "forward_match"
-      @member = Member.where("name LIKE? or email LIKE?","#{word}%","#{word}%")
+      @member = Member.where("name LIKE?","#{word}%")
     elsif search == "backward_match"
-      @member = Member.where("name LIKE? or email LIKE?","%#{word}","%#{word}")
+      @member = Member.where("name LIKE?","%#{word}")
     elsif search == "partial_match"
-      @member = Member.where("name LIKE? or email LIKE?","%#{word}%","%#{word}%")
+      @member = Member.where("name LIKE?","%#{word}%")
     else
       @member = Member.all
     end
