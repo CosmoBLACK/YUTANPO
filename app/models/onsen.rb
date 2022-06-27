@@ -38,6 +38,7 @@ class Onsen < ApplicationRecord
     onsen_image.variant(resize_to_limit: [width, height]).processed
   end
 
+　# 範囲検索
   def self.looks(search, word)
     if search == "perfect_match"
       @onsen = Onsen.where("name LIKE? or address LIKE?","#{word}","#{word}")

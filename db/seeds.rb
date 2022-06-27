@@ -248,8 +248,8 @@ onsen.onsen_image.attach(io: File.open(Rails.root.join('app/assets/images/mikuni
 
 onsen = Onsen.create!(
   name: '下呂温泉',
-  postal_code: '〒',
-  address: '岐阜県益田郡下呂町',
+  postal_code: '〒509-2206',
+  address: '岐阜県下呂市幸田',
   introduction: '日本三名泉の一つ。下呂温泉は平安時代の中頃に発見された古湯で、室町時代の禅僧・万里集九や、江戸時代の儒学者・林羅山も名泉と褒め称えています。美肌効果もある湯で、お得な「湯めぐり手形」もあり、情緒ある温泉街や河原を散策しながら湯巡りを楽しめます。'
 )
 onsen.onsen_image.attach(io: File.open(Rails.root.join('app/assets/images/gero_onsen.jpg')),filename: 'gero_onsen.jpg')

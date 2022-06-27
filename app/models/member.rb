@@ -20,15 +20,16 @@ class Member < ApplicationRecord
     profile_image.variant(resize_to_limit: [width, height]).processed
   end
 
+　# 範囲検索
   def self.looks(search, word)
     if search == "perfect_match"
-      @member = Member.where("name LIKE?", "#{word}")
+      @member = Member.where("name LIKE? or email LIKE?","#{word}","#{word}")
     elsif search == "forward_match"
-      @member = Member.where("name LIKE?","#{word}%")
+      @member = Member.where("name LIKE? or email LIKE?","#{word}%","#{word}%")
     elsif search == "backward_match"
-      @member = Member.where("name LIKE?","%#{word}")
+      @member = Member.where("name LIKE? or email LIKE?","%#{word}","%#{word}")
     elsif search == "partial_match"
-      @member = Member.where("name LIKE?","%#{word}%")
+      @member = Member.where("name LIKE? or email LIKE?","%#{word}%","%#{word}%")
     else
       @member = Member.all
     end
