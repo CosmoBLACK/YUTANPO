@@ -1,0 +1,28 @@
+<table class="table table-bordered text-center shadow-sm">
+  <tbody style="background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%)">
+    <tr>
+      <th width="300", style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">温泉名</th>
+      <td width="300"><%= onsen.name %></td>
+    </tr>
+    <tr>
+      <th style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">郵便番号</th>
+      <td><%= onsen.postal_code %></td>
+    </tr>
+    <tr>
+      <th style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">住所</th>
+      <td><%= onsen.address %></td>
+    </tr>
+    <tr>
+      <th style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">温泉紹介</th>
+      <td><%= onsen.introduction %></td>
+    </tr>
+    <tr>
+      <th style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">コメント件数</th>
+      <td><%= onsen.comments.count %></td>
+    </tr>
+    <tr>
+      <th style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">平均評価</th>
+      <td><%= render 'rate_average' %></td>
+    </tr>
+  </tbody>
+</table>

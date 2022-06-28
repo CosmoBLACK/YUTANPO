@@ -1,0 +1,21 @@
+<div class="row d-flex justify-content-center mt-3">
+  <% onsens.each do |onsen| %>
+    <div class="card m-2 shadow-sm rounded", style="background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%)">
+      <div class="p-2">
+        <%= link_to onsen_path(onsen) do %>
+          <%= image_tag onsen.get_onsen_image(200,200), style: "border-style: solid" %>
+        <% end %>
+      </div>
+      <div class="badge pt-3">
+        <%= link_to onsen_path(onsen) do %>
+          <%= onsen.name %>
+        <% end %>
+      </div>
+      <div class="badge pb-3">
+        <%= onsen.postal_code %>
+        <br><%= onsen.address %>
+        <br><%= link_to "#{onsen.comments.count} コメント", onsen_path(onsen.id) %>
+      </div>
+    </div>
+  <% end %>
+</div>
