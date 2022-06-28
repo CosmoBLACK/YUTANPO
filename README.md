@@ -19,7 +19,8 @@
 ・季節を感じたいとき
 ・心身を癒したいとき
 
-## 設計書
+## テスト仕様書
+(https://docs.google.com/spreadsheets/d/1bhboo1Uag16p_C2rwng-PH-1CvvbE24P/edit#gid=2072448154)
 
 ## 開発環境
 - OS：Linux(CentOS)
