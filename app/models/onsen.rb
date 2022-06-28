@@ -20,7 +20,7 @@ class Onsen < ApplicationRecord
 
     # 古いタグを消す
     old_tags.each do |old|
-      self.tags.delete　Tag.find_by(tag_name: old)
+      self.tags.delete Tag.find_by(tag_name: old)
     end
 
     # 新しいタグを保存
@@ -38,7 +38,7 @@ class Onsen < ApplicationRecord
     onsen_image.variant(resize_to_limit: [width, height]).processed
   end
 
-　# 範囲検索
+  # 範囲検索
   def self.looks(search, word)
     if search == "perfect_match"
       @onsen = Onsen.where("name LIKE? or address LIKE?","#{word}","#{word}")

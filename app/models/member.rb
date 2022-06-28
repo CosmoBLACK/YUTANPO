@@ -20,7 +20,7 @@ class Member < ApplicationRecord
     profile_image.variant(resize_to_limit: [width, height]).processed
   end
 
-　# 範囲検索
+  # 範囲検索
   def self.looks(search, word)
     if search == "perfect_match"
       @member = Member.where("name LIKE?","#{word}")
