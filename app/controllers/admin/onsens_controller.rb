@@ -21,7 +21,7 @@ class Admin::OnsensController < ApplicationController
     @onsen = Onsen.new(onsen_params)
     # 受け取った値を,で区切って配列にする
     # split = 1番目の引数に指定したパターンに従って文字列を分割し、分割された各部分の文字列を要素とする配列を取得する
-    tag_list = params[:onsen][:tag_name].split(',')
+    tag_list = params[:onsen][:tag_name].split(',').uniq
     if @onsen.save
       @onsen.save_tag(tag_list)
       redirect_to admin_onsens_path, success: "温泉情報を登録しました！"
