@@ -1,5 +1,5 @@
 <div class="container vh-100">
-  <h2 class="text-center text-white shadow-sm mt-3">タグが「<%=@tag.tag_name%>」の温泉一覧</h2>
+  <h2 class="text-center text-white shadow-sm mt-3">タグが「<%= @tag.tag_name %>」の温泉一覧</h2>
 
   <!-- タグリスト -->
   <%= render 'public/onsens/tag_list', tag_list: @tag_list %>
