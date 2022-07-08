@@ -13,6 +13,14 @@
  *= require_tree .
  *= require_self
  */
+ .font1 {
+  font-size: 30px;
+ }
+
+ .font2 {
+  font-size: 40px;
+ }
+
  .new-title {
   line-height: 50px;
  }
