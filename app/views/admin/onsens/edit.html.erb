@@ -8,6 +8,7 @@
       </div>
       <div class="m-5">
         <%= form_with model: @onsen, url: admin_onsen_path(@onsen), method: :patch do |f| %>
+          <%= render 'layouts/error_messages', model: f.object %>
           <div class="form-group">
             <b><%= f.label :onsen_image, "温泉画像" %></b>
             <%= f.file_field :onsen_image, accept: "image/*" %>

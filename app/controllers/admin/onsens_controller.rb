@@ -26,7 +26,6 @@ class Admin::OnsensController < ApplicationController
       @onsen.save_tag(tag_list)
       redirect_to admin_onsens_path, success: "温泉情報を登録しました！"
     else
-      flash.now[:danger] = "未入力の項目があります。"
       render :new
     end
   end
@@ -51,7 +50,6 @@ class Admin::OnsensController < ApplicationController
       @onsen.save_tag(tag_list)
       redirect_to admin_onsen_path, success: "温泉情報を更新しました！"
     else
-      flash.now[:danger] = "未入力の項目があります。"
       render :edit
     end
   end
