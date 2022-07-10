@@ -1,6 +1,11 @@
 ja:
   activerecord:
     attributes:
+      onsen:
+        name: 温泉名
+        introduction: 温泉紹介
+        postal_code: 郵便番号
+        address: 住所
       member:
         name: ニックネーム
         confirmation_sent_at: パスワード確認送信時刻
