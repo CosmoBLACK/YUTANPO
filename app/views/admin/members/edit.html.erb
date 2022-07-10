@@ -3,10 +3,10 @@
   <div class="text-center pt-5">
     <%= form_with model: @member, url: admin_member_path(@member), method: :patch do |f| %>
       <table class="mx-auto table table-bordered shadow-sm">
-        <th width="150", class="member_flag", style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">
+        <th class="status-title member_flag">
           <%= f.label :deleted_flag, '会員ステータス' %>
         </th>
-        <td width="150", class="member_deleted_flag" style="background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%)">
+        <td class="status-body member_deleted_flag">
           <%= f.radio_button :deleted_flag, false %>有効
           <%= f.radio_button :deleted_flag, true %>退会
         </td>

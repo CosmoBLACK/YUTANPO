@@ -1,9 +1,9 @@
 <% comments.each do |comment| %>
-  <div class="shadow-sm rounded py-3 px-3", style="background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%)">
+  <div class="comment-index shadow-sm rounded py-3 px-3">
 
     <div class="row text-left">
       <div class="col-2">
-        <%= image_tag comment.member.get_profile_image(100,100), style: "border-style: ridge" %>
+        <%= image_tag comment.member.get_profile_image(100,100), class: 'image' %>
         <p>投稿者：<%= comment.member.name %></p>
       </div>
 

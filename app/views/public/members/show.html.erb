@@ -2,24 +2,24 @@
   <h2 class="text-center text-white shadow-sm mt-3">マイページ</h2>
   <div class="row mt-5">
     <div class="col-5 pl-5">
-      <%= image_tag @member.get_profile_image(300,300), style: "border-style: ridge" %>
+      <%= image_tag @member.get_profile_image(300,300), class: 'image' %>
     </div>
     <div class="col-7" >
       <table class="table table-bordered text-center shadow-sm">
         <tbody>
           <tr>
-            <th width="300", style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">
+            <th class="table-title">
               ニックネーム
             </th>
-            <td width="300", style="background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%)">
+            <td class="table-body">
               <%= current_member.name %>
             </td>
           </tr>
           <tr>
-            <th style="background-image: linear-gradient(to top, #c4c5c7 0%, #dcdddf 52%, #ebebeb 100%)">
+            <th class="table-title">
               メールアドレス
             </th>
-            <td style="background-image: linear-gradient(to top, #a8edea 0%, #fed6e3 100%)">
+            <td class="table-body">
               <%= current_member.email %>
             </td>
           </tr>
