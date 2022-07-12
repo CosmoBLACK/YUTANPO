@@ -133,6 +133,16 @@ h3  {
   text-decoration: none !important;
 }
 
+.notice {
+ background-color: #f8d7da;
+ color: #0c5460;
+}
+
+.alert {
+ background-color: #d1ecf1;
+ color: #721c24;
+}
+
 footer {
   background: linear-gradient(to bottom, rgba(255,255,255,0.15) 0%, rgba(0,0,0,0.15) 100%),
               radial-gradient(at top center, rgba(255,255,255,0.40) 0%, rgba(0,0,0,0.40) 120%) #989898;

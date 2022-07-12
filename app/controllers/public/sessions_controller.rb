@@ -19,7 +19,7 @@ class Public::SessionsController < Devise::SessionsController
   #   super
   # end
   def after_sign_in_path_for(resource)
-    flash[:info] = "ログインに成功しました。"
+    flash[:info] = "ログインしました。"
     root_path
   end
 

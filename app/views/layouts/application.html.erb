@@ -107,15 +107,9 @@
     </header>
 
     <main class="mb-auto">
-      <% unless request.path.include?("sign_in") %>
-        <div id="flash_message", class="text-center">
-          <%= render 'layouts/flash' %>
-        </div>
-      <% else %>
-        <div id="flash_message_none", class="text-center">
-          <%= render 'layouts/flash' %>
-        </div>
-      <% end %>
+      <div id="flash_message", class="text-center">
+        <%= render 'layouts/flash' %>
+      </div>
       <%= yield %>
     </main>
 
