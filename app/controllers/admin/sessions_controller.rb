@@ -18,6 +18,7 @@ class Admin::SessionsController < Devise::SessionsController
   #   super
   # end
   def after_sign_in_path_for(resource)
+    flash[:info] = "管理者でログインしました。"
     root_path
   end
 
